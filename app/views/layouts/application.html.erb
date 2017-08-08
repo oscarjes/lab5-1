@@ -8,12 +8,21 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-faded">
-      <% if current_user %>
-        <%= link_to "Log out #{current_user.email}", "/", class: "navbar-brand" %>
-      <% else %>
-        <a class="navbar-brand" href="/users/new">Sign Up</a>
-      <% end %>
+    <nav class="nav justify-content-center ">
+      <ul class="nav nav-pills">
+        <% if current_user %>
+        <li class="nav-item">
+          <%= link_to "Log out #{current_user.email}", logout_path, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+          <%= link_to "Log In", login_path, class: "nav-link"%>
+          </li>
+          <li class="nav-item">
+          <%= link_to "Sign Up", new_user_path, class: "nav-link"%>
+          </li>
+        <% end %>
+      </ul>
     </nav>
     <%= flash_messages %>
     <%= yield %>
